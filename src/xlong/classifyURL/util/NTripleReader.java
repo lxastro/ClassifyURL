@@ -7,55 +7,101 @@ import java.io.IOException;
 import org.semanticweb.yars.nx.Node;
 import org.semanticweb.yars.nx.parser.NxParser;
 
-
+/**
+ * Class for reading Ntriples.
+ * 
+ * @author Xiang Long (longx13@mails.tinghua.edu.cn)
+ */
 public class NTripleReader {
-	private NxParser nxp;
-	int cnt;
-	
-	public NTripleReader(String filePath) throws FileNotFoundException, IOException{
-		nxp = new NxParser(new FileInputStream(filePath),false);
+	/** The NxParser used to parse file */
+	protected NxParser nxp;
+	/** Counts of triples */
+	protected int cnt;
+	/** Output logs or not. */
+	protected boolean outputLogs = true;
+
+	/**
+	 * Constructor
+	 * 
+	 * @param filePath
+	 *            the path of the file to read.
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public NTripleReader(String filePath) throws FileNotFoundException,
+			IOException {
+		nxp = new NxParser(new FileInputStream(filePath), false);
 		cnt = 0;
 	}
-	
-	public Node[] getNextTriple(){
-		while (nxp.hasNext()) 
-		{
+
+	/**
+	 * Set output logs or not.
+	 * 
+	 * @param outputLogs
+	 */
+	public void setLog(boolean outputLogs) {
+		this.outputLogs = outputLogs;
+	}
+
+	/**
+	 * Get next triple
+	 * 
+	 * @return next triple
+	 */
+	protected Node[] getNextTriple() {
+		while (nxp.hasNext()) {
 			Node[] ns = nxp.next();
 			if (ns.length == 3) {
-				cnt ++;
+				cnt++;
 				return ns;
 			}
 		}
 		return null;
 	}
-	
-	public void readAll(String outFile, int maxLines){
-		if (!MyWriter.setFile(outFile, false)){
+
+	/**
+	 * Read Ntriples and write result into a file.
+	 * 
+	 * @param outFile
+	 *            the file output reading result.
+	 * @param maxNum
+	 *            the max number of triples to read.
+	 */
+	public void readAll(String outFile, int maxNum) {
+		if (!MyWriter.setFile(outFile, false)) {
 			System.err.println("MyWriter setFile fail.");
 			System.exit(0);
 		}
-		
+
 		Node[] ns;
-		while ((ns = getNextTriple()) != null && cnt <= maxLines){
-			MyWriter.writeln(ns[0].toString().substring(28) + " " + ns[2].toString());
+		while ((ns = getNextTriple()) != null && cnt <= maxNum) {
+			MyWriter.writeln(ns[0].toString().substring(28) + " "
+					+ ns[2].toString());
 		}
-		System.out.println("Read lines: " + cnt);
-		
-		MyWriter.close();		
+		if (outputLogs) {
+			System.out.println("Read lines: " + cnt);
+		}
+
+		MyWriter.close();
 	}
 
+	/**
+	 * Testing code
+	 */
 	public static void main(String[] args) {
 		int maxLines = 100000000;
-		
+
 		try {
-			NTripleReader instanceTypesReader = new NTripleReader("E:/LXResearch/DBpedia/instance_types_en.nt");
+			NTripleReader instanceTypesReader = new NTripleReader(
+					"E:/LXResearch/DBpedia/instance_types_en.nt");
 			instanceTypesReader.readAll("results/instance_types.txt", maxLines);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
-			NTripleReader instanceTypesReader = new NTripleReader("E:/LXResearch/DBpedia/external_links_en.nt");
+			NTripleReader instanceTypesReader = new NTripleReader(
+					"E:/LXResearch/DBpedia/external_links_en.nt");
 			instanceTypesReader.readAll("results/external_links.txt", maxLines);
 		} catch (IOException e) {
 			e.printStackTrace();
