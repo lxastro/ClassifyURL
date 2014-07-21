@@ -18,8 +18,9 @@ public class NTripleReader {
 	/** Counts of triples */
 	protected int cnt;
 	/** Output logs or not. */
-	protected boolean outputLogs = true;
-
+	protected static boolean outputLogs = true;
+	/** Normalize URL or not. */
+	protected static boolean normalize = true;
 	/**
 	 * Constructor
 	 * 
@@ -39,8 +40,8 @@ public class NTripleReader {
 	 * 
 	 * @param outputLogs
 	 */
-	public void setLog(boolean outputLogs) {
-		this.outputLogs = outputLogs;
+	public static void setLog(boolean _outputLogs) {
+		outputLogs = _outputLogs;
 	}
 
 	/**
@@ -74,9 +75,19 @@ public class NTripleReader {
 		}
 
 		Node[] ns;
+		String name;
+		String prop;
 		while ((ns = getNextTriple()) != null && cnt <= maxNum) {
-			MyWriter.writeln(ns[0].toString().substring(28) + " "
-					+ ns[2].toString());
+			if (normalize){
+				name = UrlNormalizer.normalize(ns[0].toString()).substring(28);
+				prop = UrlNormalizer.normalize(ns[2].toString());
+			}
+			else{
+				name = ns[0].toString().substring(28);
+				prop = ns[2].toString();
+			}
+			
+			MyWriter.writeln(name + " " + prop);
 		}
 		if (outputLogs) {
 			System.out.println("Read lines: " + cnt);

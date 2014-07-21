@@ -19,5 +19,6 @@
 	<classpathentry kind="lib" path="E:/LXResearch/Apache_Jena/apache-jena-2.11.1/lib/xercesImpl-2.11.0.jar"/>
 	<classpathentry kind="lib" path="E:/LXResearch/Apache_Jena/apache-jena-2.11.1/lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="src" path="/Classify"/>
+	<classpathentry kind="lib" path="E:/LXResearch/Libidn/libidn-1.28.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
