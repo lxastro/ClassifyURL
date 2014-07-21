@@ -33,11 +33,11 @@ public class CombineURLsTypes {
 				if (urlFirstLine == null) break;
 				nameAndInfo = urlFirstLine.split(" ");
 				urlsEntity = new SimpleEntity(nameAndInfo[0]);
-				urlsEntity.addUrl(nameAndInfo[1]);
+				urlsEntity.addURL(nameAndInfo[1]);
 				while((urlFirstLine = urlsReader.readLine())!=null){
 					nameAndInfo = urlFirstLine.split(" ");
-					if (!nameAndInfo[0].equals(urlsEntity.name)) break;
-					urlsEntity.addUrl(nameAndInfo[1]);
+					if (!nameAndInfo[0].equals(urlsEntity.getName())) break;
+					urlsEntity.addURL(nameAndInfo[1]);
 				}
 //				System.out.println("next url entity");
 //				System.out.println(urlsEntity.toString());
@@ -49,24 +49,24 @@ public class CombineURLsTypes {
 				typesEntity.addType(nameAndInfo[1]);
 				while((typeFirstLine = typesReader.readLine())!=null){
 					nameAndInfo = typeFirstLine.split(" ");
-					if (!nameAndInfo[0].equals(typesEntity.name)) break;
+					if (!nameAndInfo[0].equals(typesEntity.getName())) break;
 					typesEntity.addType(nameAndInfo[1]);
 				}
 //				System.out.println("next type entity");
 //				System.out.println(typesEntity.toString());
 			}
 			
-			if (urlsEntity.equal(typesEntity)){
+			if (urlsEntity.equals(typesEntity)){
 				urlsEntity.combine(typesEntity);
 				combineWriter.write(urlsEntity.toString());
 				combineWriter.newLine();
 				urlsEntity = null;
 				typesEntity = null;
 			}
-			else if (urlsEntity.name.compareTo(typesEntity.name) < 0){
+			else if (urlsEntity.getName().compareTo(typesEntity.getName()) < 0){
 				urlsEntity = null;
 			}
-			else if (urlsEntity.name.compareTo(typesEntity.name) > 0){
+			else if (urlsEntity.getName().compareTo(typesEntity.getName()) > 0){
 				typesEntity = null;
 			}
 		}
@@ -95,11 +95,11 @@ public class CombineURLsTypes {
 				if (urlFirstLine == null) break;
 				nameAndInfo = urlFirstLine.split(" ");
 				urlsEntity = new SimpleEntity(nameAndInfo[0]);
-				urlsEntity.addUrl(nameAndInfo[1]);
+				urlsEntity.addURL(nameAndInfo[1]);
 				while((urlFirstLine = urlsReader.readLine())!=null){
 					nameAndInfo = urlFirstLine.split(" ");
-					if (!nameAndInfo[0].equals(urlsEntity.name)) break;
-					urlsEntity.addUrl(nameAndInfo[1]);
+					if (!nameAndInfo[0].equals(urlsEntity.getName())) break;
+					urlsEntity.addURL(nameAndInfo[1]);
 				}
 //				System.out.println("next url entity");
 //				System.out.println(urlsEntity.toString());
@@ -111,24 +111,25 @@ public class CombineURLsTypes {
 				typesEntity.addType(nameAndInfo[1]);
 				while((typeFirstLine = typesReader.readLine())!=null){
 					nameAndInfo = typeFirstLine.split(" ");
-					if (!nameAndInfo[0].equals(typesEntity.name)) break;
+					if (!nameAndInfo[0].equals(typesEntity.getName())) break;
 					typesEntity.addType(nameAndInfo[1]);
 				}
 //				System.out.println("next type entity");
 //				System.out.println(typesEntity.toString());
 			}
 			
-			if (urlsEntity.equal(typesEntity)){
-				urlsEntity.combineAndFilter(typesEntity, subClassMap);
+			if (urlsEntity.equals(typesEntity)){
+				urlsEntity.combine(typesEntity);
+				urlsEntity.FilterTypes(subClassMap);
 				combineWriter.write(urlsEntity.toString());
 				combineWriter.newLine();
 				urlsEntity = null;
 				typesEntity = null;
 			}
-			else if (urlsEntity.name.compareTo(typesEntity.name) < 0){
+			else if (urlsEntity.getName().compareTo(typesEntity.getName()) < 0){
 				urlsEntity = null;
 			}
-			else if (urlsEntity.name.compareTo(typesEntity.name) > 0){
+			else if (urlsEntity.getName().compareTo(typesEntity.getName()) > 0){
 				typesEntity = null;
 			}
 		}
@@ -146,10 +147,10 @@ public class CombineURLsTypes {
 //		String outCombineFile = "results/combine.txt";
 		String outCombineAndFilterFile = "results/combineAndFilter.txt";
 		Map<String, HashSet<String>> subClassMap = SubClassRelationReader.getSubClassOf("E:/LXResearch/DBpedia/dbpedia_3.9.owl");
-		int maxLines = 100000000;
-		int maxPartsLines = 1000000;
-//		int maxLines = 100000;
-//		int maxPartsLines = 10000;		
+//		int maxLines = 100000000;
+//		int maxPartsLines = 1000000;
+		int maxLines = 100000;
+		int maxPartsLines = 10000;		
 		try {
 			NTripleReader URLsReader = new NTripleReader(URLsFile);
 			URLsReader.readAll(outURLsFile, maxLines);
