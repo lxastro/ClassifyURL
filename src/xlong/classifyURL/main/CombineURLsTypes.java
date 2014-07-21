@@ -26,7 +26,7 @@ public class CombineURLsTypes {
 	public static void setLog(boolean _outputLogs) {
 		outputLogs = _outputLogs;
 	}
-
+	
 	/**
 	 * Combine and filter the URLs and types file.
 	 * 
@@ -120,35 +120,30 @@ public class CombineURLsTypes {
 		String outCombineAndFilterFile = "results/combineAndFilter.txt";
 		Map<String, HashSet<String>> subClassMap = SubClassRelationReader
 				.getSubClassOf("E:/LXResearch/DBpedia/dbpedia_3.9.owl");
-		// int maxLines = 100000000;
-		// int maxPartsLines = 1000000;
-		int maxLines = 100000;
-		int maxPartsLines = 10000;
+		int maxLines = 100000000;
+		int maxPartsLines = 1000000;
+//		int maxLines = 100000;
+//		int maxPartsLines = 10000;
 		try {
 			NTripleReader URLsReader = new NTripleReader(URLsFile);
 			URLsReader.readAll(outURLsFile, maxLines);
-			if (outputLogs)
-				System.out.println("Read 1");
+			if (outputLogs) System.out.println("Read 1");
 
 			NTripleReader TypesReader = new NTripleReader(typesFile);
 			TypesReader.readAll(outTypesFile, maxLines);
-			if (outputLogs)
-				System.out.println("Read 2");
+			if (outputLogs)System.out.println("Read 2");
 
 			LineSort.setMaxLine(maxPartsLines);
 
 			LineSort.sortLines(outURLsFile, outURLsFile);
-			if (outputLogs)
-				System.out.println("Sort 1");
+			if (outputLogs)System.out.println("Sort 1");
 
 			LineSort.sortLines(outTypesFile, outTypesFile);
-			if (outputLogs)
-				System.out.println("Sort 2");
-
+			if (outputLogs)System.out.println("Sort 2");
+			
 			combineAndFilter(outURLsFile, outTypesFile,
 					outCombineAndFilterFile, subClassMap);
-			if (outputLogs)
-				System.out.println("CombineAndFilter");
+			if (outputLogs)System.out.println("CombineAndFilter");
 
 		} catch (IOException e) {
 			e.printStackTrace();

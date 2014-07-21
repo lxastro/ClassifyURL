@@ -18,6 +18,11 @@ import weka.core.stemmers.NullStemmer;
 import weka.core.tokenizers.Tokenizer;
 import xlong.classifyURL.util.MyWriter;
 
+/**
+ * Class to convert string to word vectore
+ * 
+ * @author Xiang Long (longx13@mails.tsinghua.edu.cn)
+ */
 public class StringToWordVectorConverter {
 	private HashSet<Integer> selectedRange;
 	private Tokenizer tokenizer;
@@ -28,7 +33,7 @@ public class StringToWordVectorConverter {
 	private boolean s_lowerCaseTokens = true;
 	private boolean s_useStoplist = false;
     private boolean s_OutputCounts = false;
-	private int s_wordsToKeep = 2000;
+	private int s_wordsToKeep = 10000;
 	private int s_minTermFreq = 1;
 	private String s_prefix = "";
 

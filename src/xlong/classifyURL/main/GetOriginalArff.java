@@ -8,7 +8,7 @@ public class GetOriginalArff {
 	public static void getOriginalArff(int nAll) throws Exception{
 		Instances data; 
 		
-		String dir = "E:/LXResearch/Codes/GetTrainingData/results/URLsHaveSameType/";
+		String dir = "results/URLsHaveSameType/";
 
 		String[] allFiles = new String[nAll];
 		for (int i=0;i<nAll;i++){
