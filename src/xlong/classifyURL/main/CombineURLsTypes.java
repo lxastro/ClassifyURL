@@ -1,3 +1,6 @@
+/**
+ * Project : Classify URLs
+ */
 package xlong.classifyURL.main;
 
 import java.io.BufferedReader;
@@ -8,10 +11,10 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Map;
 
-import xlong.classifyURL.beans.SimpleEntity;
+import xlong.classifyURL.core.NTripleReader;
+import xlong.classifyURL.core.SimpleEntity;
+import xlong.classifyURL.core.SubClassRelationReader;
 import xlong.classifyURL.util.LineSort;
-import xlong.classifyURL.util.NTripleReader;
-import xlong.classifyURL.util.SubClassRelationReader;
 
 public class CombineURLsTypes {
 

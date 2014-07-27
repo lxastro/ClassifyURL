@@ -1,8 +1,11 @@
+/**
+ * Project : Classify URLs
+ */
 package xlong.classifyURL.main;
 
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSink;
-import xlong.classifyURL.converter.FilesToInstances;
+import xlong.classifyURL.core.FilesToInstances;
 
 public class GetOriginalArff {
 	public static void getOriginalArff(int nAll) throws Exception{

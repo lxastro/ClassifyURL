@@ -1,4 +1,7 @@
-package xlong.classifyURL.beans;
+/**
+ * Project : Classify URLs
+ */
+package xlong.classifyURL.core;
 
 import java.util.ArrayList;
 import java.util.HashSet;

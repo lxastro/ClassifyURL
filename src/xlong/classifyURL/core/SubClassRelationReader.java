@@ -1,4 +1,7 @@
-package xlong.classifyURL.util;
+/**
+ * Project : Classify URLs
+ */
+package xlong.classifyURL.core;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,6 +9,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import xlong.classifyURL.util.MyWriter;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;

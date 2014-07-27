@@ -1,4 +1,7 @@
-package xlong.classifyURL.converter;
+/**
+ * Project : Classify URLs
+ */
+package xlong.classifyURL.core;
 
 import java.io.BufferedReader;
 import java.io.File;

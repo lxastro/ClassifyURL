@@ -1,4 +1,7 @@
-package xlong.classifyURL.util;
+/**
+ * Project : Classify URLs
+ */
+package xlong.classifyURL.core;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -6,6 +9,8 @@ import java.io.IOException;
 
 import org.semanticweb.yars.nx.Node;
 import org.semanticweb.yars.nx.parser.NxParser;
+
+import xlong.classifyURL.util.MyWriter;
 
 /**
  * Class for reading Ntriples.

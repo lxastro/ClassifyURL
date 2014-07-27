@@ -1,4 +1,7 @@
-package xlong.classifyURL.converter;
+/**
+ * Project : Classify URLs
+ */
+package xlong.classifyURL.core;
 
 import weka.core.Option;
 import weka.core.RevisionUtils;

@@ -1,4 +1,7 @@
-package xlong.classifyURL.util;
+/**
+ * Project : Classify URLs
+ */
+package xlong.classifyURL.core;
 
 import java.net.URI;
 import java.net.URL;

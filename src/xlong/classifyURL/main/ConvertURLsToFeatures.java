@@ -1,3 +1,6 @@
+/**
+ * Project : Classify URLs
+ */
 package xlong.classifyURL.main;
 
 import java.io.File;
@@ -7,8 +10,8 @@ import weka.core.Instances;
 import weka.core.converters.ArffLoader;
 import weka.core.converters.ArffSaver;
 import weka.core.tokenizers.Tokenizer;
-import xlong.classifyURL.converter.NCharGramTokenizer;
-import xlong.classifyURL.converter.StringToWordVectorConverter;
+import xlong.classifyURL.core.NCharGramTokenizer;
+import xlong.classifyURL.core.StringToWordVectorConverter;
 import xlong.classifyURL.util.MyWriter;
 
 public class ConvertURLsToFeatures {
