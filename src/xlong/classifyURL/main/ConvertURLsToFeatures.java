@@ -19,10 +19,10 @@ public class ConvertURLsToFeatures {
 	public static void run(){
 		try{
 			System.out.println("Convert URls to features...");
-			File testFile = new File("results/URLAll_Test.arff");
-			File trainFile = new File("results/URLAll_Train.arff");
-			File outTestFile = new File("results/Test.arff");
-			File outTrainFile = new File("results/Train.arff");
+			File testFile = new File("temp/URLAll_Test.arff");
+			File trainFile = new File("temp/URLAll_Train.arff");
+			File outTestFile = new File("temp/Test.arff");
+			File outTrainFile = new File("temp/Train.arff");
 			ArffLoader loader;
 			ArffSaver saver;
 			int cnt;

@@ -81,8 +81,8 @@ public class GetURLsHaveSameType {
 	public static void run() {
 		// String outCombineFile = "results/combine.txt";
 		// String urlsHaveSameTypeDir = "results/URLsHaveSameTypeOri";
-		String outCombineFile = "results/combineAndFilter.txt";
-		String urlsHaveSameTypeDir = "results/URLsHaveSameType";
+		String outCombineFile = "temp/combineAndFilter.txt";
+		String urlsHaveSameTypeDir = "temp/URLsHaveSameType";
 		try {
 			System.out.println("Get URLs have same type...");
 			getURLsHaveSameType(outCombineFile, urlsHaveSameTypeDir);

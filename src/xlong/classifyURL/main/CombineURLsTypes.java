@@ -15,6 +15,7 @@ import xlong.classifyURL.core.NTripleReader;
 import xlong.classifyURL.core.SimpleEntity;
 import xlong.classifyURL.core.SubClassRelationReader;
 import xlong.classifyURL.util.LineSort;
+import xlong.classifyURL.util.PropertiesUtil;
 
 public class CombineURLsTypes {
 
@@ -115,18 +116,20 @@ public class CombineURLsTypes {
 	}
 
 	public static void run() throws IOException {
-		String URLsFile = "E:/LXResearch/DBpedia/external_links_en.nt";
-		String typesFile = "E:/LXResearch/DBpedia/instance_types_en.nt";
-		String outURLsFile = "results/external_links.txt";
-		String outTypesFile = "results/instance_types.txt";
-		// String outCombineFile = "results/combine.txt";
-		String outCombineAndFilterFile = "results/combineAndFilter.txt";
+		String URLsFile = PropertiesUtil.getProperty("DBpedia_external_links.nt");
+		String typesFile = PropertiesUtil.getProperty("DBpedia_instance_types.nt");
+		String ontologyFile = PropertiesUtil.getProperty("DBpedia_ontology.owl");
+		
+		String outURLsFile = "temp/external_links.txt";
+		String outTypesFile = "temp/instance_types.txt";
+		String outCombineAndFilterFile = "temp/combineAndFilter.txt";
 		Map<String, HashSet<String>> subClassMap = SubClassRelationReader
-				.getSubClassOf("E:/LXResearch/DBpedia/dbpedia_3.9.owl");
+				.getSubClassOf(ontologyFile);
 		int maxLines = 100000000;
 		int maxPartsLines = 1000000;
-//		int maxLines = 100000;
-//		int maxPartsLines = 10000;
+//		int maxLines = 1000000;
+//		int maxPartsLines = 100000;
+		
 		try {
 			NTripleReader URLsReader = new NTripleReader(URLsFile);
 			URLsReader.readAll(outURLsFile, maxLines);

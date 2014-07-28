@@ -1,2 +1,6 @@
 *.class
-results/
+result/
+temp/
+.classpath
+*.properties
+/bin/

@@ -23,8 +23,8 @@ public class UpdateClassifyURLs {
 
 		try {
 			System.out.println("Classify...");
-			File trainFile = new File("results/Train.arff");
-			File testFile = new File("results/Test.arff");
+			File trainFile = new File("temp/Train.arff");
+			File testFile = new File("temp/Test.arff");
 			ArffLoader loader;
 			Instance current;
 			int cnt;
@@ -71,11 +71,11 @@ public class UpdateClassifyURLs {
 			}
 
 			// Print result
-			MyWriter.setFile("results/result.txt", false);
+			MyWriter.setFile("result/result.txt", false);
 			MyWriter.writeln(testingEvaluation.toSummaryString());
 			MyWriter.writeln(testingEvaluation.toClassDetailsString());
 			MyWriter.close();
-			MyWriter.setFile("results/matrix.txt", false);
+			MyWriter.setFile("result/matrix.txt", false);
 			MyWriter.writeln(testingEvaluation.toMatrixString());
 			MyWriter.close();
 			

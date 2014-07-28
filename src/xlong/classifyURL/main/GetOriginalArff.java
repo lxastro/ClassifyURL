@@ -11,7 +11,7 @@ public class GetOriginalArff {
 	public static void getOriginalArff(int nAll) throws Exception{
 		Instances data; 
 		
-		String dir = "results/URLsHaveSameType/";
+		String dir = "temp/URLsHaveSameType/";
 
 		String[] allFiles = new String[nAll];
 		for (int i=0;i<nAll;i++){
@@ -29,8 +29,8 @@ public class GetOriginalArff {
 		int testSize = data.numInstances() - trainSize;
 		Instances train = new Instances(data, 0, trainSize);
 		Instances test = new Instances(data, trainSize, testSize);
-		DataSink.write("results/URLAll_Train.arff", train);
-		DataSink.write("results/URLAll_Test.arff", test);
+		DataSink.write("temp/URLAll_Train.arff", train);
+		DataSink.write("temp/URLAll_Test.arff", test);
 	}
 	
 	public static void getOriginalArff() throws Exception{
@@ -39,7 +39,7 @@ public class GetOriginalArff {
 	
 	public static void run() throws Exception {
 		System.out.println("Get Orignal Arff...");
-		getOriginalArff();
+		getOriginalArff(200);
 
 	}
 
